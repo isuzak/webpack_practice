@@ -9,9 +9,11 @@ module.exports = {
   module: {
     rules: [  // 配列で指定する
       {
-        test: /\.css/,  //test command ファイルを確認するコマンド「.css」であるかを確認
+        test: /\.css/,
         use: [
-          loader: 'css-loader'
+          {
+            loader:  'css-loader',
+          }
         ],
       },
     ],
