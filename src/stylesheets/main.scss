@@ -1,0 +1,26 @@
+@use './footer.scss'; // 他のファイルからインポートする
+
+// @mixin 関数を使用できる （あまり使わない）
+@mixin set-margin ( $direction, $value){
+  margin-#{$direction}: $value;
+}
+
+body {
+  color: orange;
+}
+
+$text-color: orange;
+
+
+// @extend の使い方 元の設定を拡張したい時
+.content {
+  .title {
+    font-size: 24ps;
+    color: $text-color;
+  }
+  .title-lg {
+    @extend .title; // font-size 以外は .title の内容を使用する。
+    font-size: 32px;
+  }
+  @include set-margin(right, 16px); // @mixin を呼び出す
+}

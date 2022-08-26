@@ -12,14 +12,17 @@ module.exports = {
   module: {
     rules: [  // 配列で指定する
       {
-        test: /\.css/,
+        test: /\.(css|sass|scss)/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
-          }
+          },
+          {
+            loader: 'sass-loader',
+          },
         ],
       },
       {
@@ -70,6 +73,12 @@ module.exports = {
         filename: 'access.html',
       },
     ),
+    new HtmlWebpackPlugin(
+    {
+      template: './src/templates/members/taro.pug',
+      filename: 'members/taro.html',
+    },
+  ),
     new CleanWebpackPlugin(),
   ],
 }
