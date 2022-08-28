@@ -1,26 +1,46 @@
 @use './footer.scss'; // 他のファイルからインポートする
+@use './menu.scss';
 
-// @mixin 関数を使用できる （あまり使わない）
-@mixin set-margin ( $direction, $value){
-  margin-#{$direction}: $value;
+html, body, div, p, img, h1, h2, h3, h4, h5 {
+  box-sizing: border-box;
 }
 
 body {
-  color: orange;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: sans-serif;
 }
 
-$text-color: orange;
+h1 {
+  font-size: 2em;
+}
 
+.container {
+  width: 980px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.5em;
+}
 
-// @extend の使い方 元の設定を拡張したい時
-.content {
-  .title {
-    font-size: 24ps;
-    color: $text-color;
-  }
-  .title-lg {
-    @extend .title; // font-size 以外は .title の内容を使用する。
-    font-size: 32px;
-  }
-  @include set-margin(right, 16px); // @mixin を呼び出す
+.main-image {
+  background-image: url('../images/thumbnail.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border-radius: 2em;
+  margin: 1em 0;
+}
+
+$icon-size: 64px;
+.icon {
+  width: $icon-size;
+  height: $icon-size;
+  border-radius: calc($icon-size / 2);
+  padding: 4px;
+  position: absolute;
+  top: 1em;
+  left: 1em;
 }

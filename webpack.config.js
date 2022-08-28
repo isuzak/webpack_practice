@@ -10,7 +10,8 @@ module.exports = {
   entry: './src/javascript/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'javascript/main.js'
+    filename: 'javascript/main.js',
+    publicPath: '/',
   },
   module: {
     rules: [  // 配列で指定する
@@ -83,7 +84,7 @@ module.exports = {
             //  optimization images loader
             loader: 'image-webpack-loader',
             options: {
-              progressive: true,
+              // progressive: true,
               quality: 65,
             },
           },
