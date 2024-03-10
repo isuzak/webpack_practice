@@ -1,5 +1,5 @@
 import my from '../javascripts/my.js';
-import '../stylesheets/my.css';
+import '../stylesheets/main.css';
 
 console.log('webpack');
 
