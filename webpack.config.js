@@ -13,13 +13,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css/, // 正規表現で '.'をエスケープ cssファイルに反応する。
+        test: /\.(css|scss|sass)/, // 正規表現で '.'をエスケープ cssファイルに反応する。
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
           },
         ],
       },
