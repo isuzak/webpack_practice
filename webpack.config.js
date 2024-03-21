@@ -4,14 +4,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  devtool: 'source-map',
   mode: 'development',
-  entry: './src/javascripts/main.js',
+  entry: './src/javascript/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'javascripts/main.js'
+    filename: 'javascript/main.js'
   },
   module: {
     rules: [
+      {
+        test:/\.js/,
+        exclude: /node-modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets:['@babel/preset-env'],
+            },
+          },
+        ],
+      },
       {
         test: /\.(css|scss|sass)/, // 正規表現で '.'をエスケープ cssファイルに反応する。
         use: [
@@ -19,7 +32,10 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              sourceMap: false, //True は読みやすいがファイルサイズがおおきくなる。開発が終わるとFalseに
+            },
           },
           {
             loader: 'sass-loader'
@@ -27,7 +43,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg)/,
+        test: /\.(png|jpg|jpeg)/,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]'
@@ -40,6 +56,15 @@ module.exports = {
           //     name: 'images/[name].[ext]',
           //   },
           // },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+            },
+          },
         ],
       },
       {

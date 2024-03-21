@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "build:dev": "webpack"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.10.0",
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
+    "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.8.1",
     "pug-html-loader": "^1.1.5",
     "sass": "^1.71.1",
